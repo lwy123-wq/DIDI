@@ -14,13 +14,19 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     runtimeOnly 'mysql:mysql-connector-java'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     //单元测试
-    testCompile("org.springframework.boot:spring-boot-starter-test:${spring_boot_version}")
-    testCompile("junit:junit:4.12")
-    compile("org.springframework.boot:spring-boot-starter-parent:${spring_boot_version}")
-    compile("org.springframework.boot:spring-boot-starter:${spring_boot_version}")
+// https://mvnrepository.com/artifact/junit/junit
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: '2.4.5', ext: 'pom'
+
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.4.3'
+
 }
 
 test {
