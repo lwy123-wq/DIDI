@@ -101,4 +101,20 @@ public class JobInfo {
     public void setEducation(String education) {
         this.education = education;
     }
+
+    public JobInfo(String name, String phone, String id_code, String card, String school, String email, String marriage, String address, int years, String education) {
+        this.name = name;
+        this.phone = phone;
+        this.id_code = id_code;
+        this.card = card;
+        this.school = school;
+        this.email = email;
+        this.marriage = marriage;
+        this.address = address;
+        this.years = years;
+        this.education = education;
+    }
+
+    public JobInfo() {
+    }
 }

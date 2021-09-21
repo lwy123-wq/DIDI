@@ -1,5 +1,6 @@
 package com.sun.didi;
 
+import com.sun.didi.dao.JobDao;
 import com.sun.didi.service.UserServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -12,11 +13,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 class DidiApplicationTests {
     @Autowired
     private UserServiceImpl userService;
-
+    @Autowired
+    private JobDao jobDao;
     @Test
     void contextLoads() {
 
-        userService.create("ll","1111",33);
+        //userService.create("ll","1111",33);
+        jobDao.create("aa","11"," ","","","","","",2,"");
     }
 
 }
