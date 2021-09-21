@@ -83,6 +83,31 @@
             color: #3592c4;
         }
     </style>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script>
+        function login(){
+            $.ajax({
+                url: "/loginn",
+                type: 'POST',
+                data: {'username': $("#username").val(), 'password': $("#password").val()},
+                success: function (res) {
+                    if(res=="success"){
+                        wsSend()
+                        function login(){
+                            window.location.href='chat_client.html'
+                        }
+                        login()
+                    }else{
+                        alert("error");
+                    }
+                },
+                error: function (res) {
+                    alert("error!!!!!")
+                }
+            });
+         }
+
+    </script>
 </head>
 <body>
 <div class="boxx">
@@ -90,7 +115,7 @@
         <h1>Login</h1>
         <input type="text"name="username"placeholder="UserName" />
         <input type="password"name="password"placeholder="UserPassword" />
-        <input type="submit"  value="Login" />
+        <input type="submit"  value="Login" onclick="login()"/>
 
     </form>
     <div class="right">
