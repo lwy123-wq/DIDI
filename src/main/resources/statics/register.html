@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <title>注册页面</title>
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
         .boxx {
             position: relative;
-            width: 1300px;
+            width: 1550px;
             height: 800px;
             background: url("images/beijing.png") no-repeat;
             background-size: 100% 100%;
@@ -18,17 +22,18 @@
             padding: 40px;
             position: absolute;
             top: 50%;
-            left: 37%;
+            left: 50%;
             transform: translate(-50%,-50%);
             background-color: #00000068;
             text-align: center;
+            margin: 0 auto;
         }
         .right {
             width: 400px;
             height: 370px;
             position: absolute;
             top: 27%;
-            right: 17%;
+            right: 23%;
             background-color: #00000068;
             text-align: center;
 
@@ -42,7 +47,7 @@
             border: 2px solid #c8d6e5;
             padding: 14px 10px;
             outline: none;
-            color: #ffffff;
+            color: #c8d6e5;
             border-radius: 24px;
             transition: 0.25s;
         }
@@ -89,20 +94,20 @@
 <div class="boxx">
     <form class="box" action="login.action"method="post">
         <h1>register</h1>
-        <input type="text"name="username"placeholder="UserName" />
+        <input type="text"name="username"placeholder="UserName" value="username"/>
         <input type="password"name="password"placeholder="UserPassword" />
         <input type="email" name="email" placeholder="email"/>
         <input type="text" id="input1" placeholder="checkcode"/>
-        <input type="text" onclick="createCode()" readonly="readonly" id="checkCode" class="unchanged" style="width: 80px" /><br />
+        <input type="text" onclick="createCode()" readonly="readonly" id="checkCode" class="unchanged" style="width: 80px" placeholder="click here"/><br />
 <!--        <input id="Button1" onclick="validate();" type="button" value="确定" />-->
         <input id="Button1" onclick="validate();" type="submit"  value="Register" />
 
     </form>
-    <div class="right">
-        <h1>Welcome to Didi job platform</h1>
-        <p>Didi Job platform is a trading platform dedicated to serving the vast number of job seekers and companies. You will have a perfect experience here</p>
-<!--        <p>Not registered yet? Click here to <a href="#">register</a> </p>-->
-    </div>
+<!--    <div class="right">-->
+<!--        <h1>Welcome to Didi job platform</h1>-->
+<!--        <p>Didi Job platform is a trading platform dedicated to serving the vast number of job seekers and companies. You will have a perfect experience here</p>-->
+<!--&lt;!&ndash;        <p>Not registered yet? Click here to <a href="#">register</a> </p>&ndash;&gt;-->
+<!--    </div>-->
 </div>
 <script language="javascript" type="text/javascript">
     var code; //在全局 定义验证码
