@@ -29,6 +29,7 @@ dependencies {
     compile("com.fasterxml.jackson.core:jackson-databind:${jackson_version}")
     compile("com.fasterxml.jackson.core:jackson-core:${jackson_version}")
     compile("com.fasterxml.jackson.core:jackson-annotations:${jackson_version}")
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '2.5.1'
 }
 
 test {
