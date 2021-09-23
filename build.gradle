@@ -1,4 +1,4 @@
-plugins {
+/*plugins {
     id 'org.springframework.boot' version '2.5.4'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
@@ -13,23 +13,83 @@ repositories {
 }
 
 dependencies {
-    //连接数据库
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    runtimeOnly 'mysql:mysql-connector-java'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    //单元测试
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: '2.3.1.RELEASE', ext: 'pom'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.3.1.RELEASE'
+    implementation group: 'io.lettuce', name: 'lettuce-core', version: '6.0.2.RELEASE'
+
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '2.3.4.RELEASE'
+    implementation group: 'com.auth0', name: 'java-jwt', version: '3.11.0'
+    implementation group: 'com.auth0', name: 'auth0', version: '1.28.0'
+    compileOnly group: 'javax', name: 'javaee-api', version: '7.0'
+
+    implementation group: 'aspectj', name: 'aspectjrt', version: '1.5.3'
+    implementation group: 'com.auth0', name: 'java-jwt', version: '2.2.0'
+
+}
+
+test {
+    useJUnitPlatform()
+}*/
+plugins {
+    id 'org.springframework.boot' version '2.5.3'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     runtimeOnly 'mysql:mysql-connector-java'
-    //单元测试
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation group: 'junit', name: 'junit', version: '4.12'
-
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: '2.4.5', ext: 'pom'
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.4.3'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-
+    //数据库连接
+    compile("org.springframework.boot:spring-boot-starter-jdbc:${spring_boot_version}")
+    compile("mysql:mysql-connector-java:${mysql_connection_version}")
+    //单元测试
+    testCompile("org.springframework.boot:spring-boot-starter-test:${spring_boot_version}")
+    testCompile("junit:junit:4.12")
+    compile("org.springframework.boot:spring-boot-starter-parent:${spring_boot_version}")
+    compile("org.springframework.boot:spring-boot-starter:${spring_boot_version}")
+    compile("org.springframework.boot:spring-boot-starter-freemarker:${spring_boot_version}")
+    //lombok
+    compile("org.projectlombok:lombok:${lombok_version}")
+    //jpa
+    compile("org.springframework.boot:spring-boot-starter-data-jpa:${spring_boot_version}")
+    //netty
+    implementation group: 'io.netty', name: 'netty-all', version: '4.1.51.Final'
+    //json
+    implementation group: 'com.alibaba', name: 'fastjson', version: '1.2.76'
+    //springframework
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.4.3'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.5.2'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.5.2'
+    //alibaba/druid
+    implementation group: 'com.alibaba', name: 'druid', version: '1.1.12'
+    //jackson
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.2'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.3'
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
+    //session
+    implementation group: 'org.springframework.session', name: 'spring-session', version: '1.3.1.RELEASE'
     compile("org.springframework.boot:spring-boot-starter-data-redis:${spring_boot_version}")
     compile("org.apache.commons:commons-pool2:${connection_pool_version}")
     compile("com.fasterxml.jackson.core:jackson-databind:${jackson_version}")
     compile("com.fasterxml.jackson.core:jackson-core:${jackson_version}")
     compile("com.fasterxml.jackson.core:jackson-annotations:${jackson_version}")
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '2.5.1'
+
+
 }
 
 test {

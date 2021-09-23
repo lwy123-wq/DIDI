@@ -1,14 +1,13 @@
 package com.sun.didi.support;
 
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Pointcut;
+
 import org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class CacheImpl {
     @Autowired
     private RedisCache redisCache;
-    @Pointcut("@annotation(com.sun.didi.annotation.Cache)")
+/*    @Pointcut("@annotation(com.sun.didi.annotation.Cache)")
     public void cacheMethod(){
 
     }
@@ -17,5 +16,5 @@ public class CacheImpl {
             return null;
         }
         return null;
-    }
+    }*/
 }
