@@ -12,7 +12,7 @@
             position: relative;
             width: 1550px;
             height: 800px;
-            background: url("images/beijing.png") no-repeat;
+            background: url("statics/images/beijing.png") no-repeat;
             background-size: 100% 100%;
             margin: 0 auto;
         }
@@ -87,18 +87,18 @@
             color: #3592c4;
         }
     </style>
-    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="statics/js/jquery.js"></script>
     <script>
         function login(){
             $.ajax({
-                url: "/loginn",
-                type: 'POST',
-                data: {'username': $("#username").val(), 'password': $("#password").val()},
+                url: "/login",
+                type: 'GET',
+                data: {'username': $("#username").val(), 'password': $("#password").val(),'email': $("#email").val()},
                 success: function (res) {
                     if(res=="success"){
                         wsSend()
                         function login(){
-                            window.location.href='chat_client.html'
+                            window.location.href='register.html'
                         }
                         login()
                     }else{
@@ -115,10 +115,11 @@
 </head>
 <body>
 <div class="boxx">
-    <form class="box" action="login.action"method="post">
+    <form class="box" action="login.action"method="GET">
         <h1>Login</h1>
         <input type="text"name="username"placeholder="UserName" />
         <input type="password"name="password"placeholder="UserPassword" />
+        <input type="text"name="Email"placeholder="Email" />
         <input type="submit"  value="Login" onclick="login()"/>
 
     </form>

@@ -4,6 +4,7 @@ public class RegisterUser {
 
     private String name;
     private String passwd;
+    private String email;
     private int code;
 
     public String getName() {
@@ -20,6 +21,14 @@ public class RegisterUser {
 
     public void setPasswd(String passwd) {
         this.passwd = passwd;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getCode() {
