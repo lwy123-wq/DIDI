@@ -16,17 +16,18 @@ public class UserController {
     private UserServiceImpl userService;
     @RequestMapping(value = "/demo", method = RequestMethod.GET)
     public String Aa(){
-        return "aaa";
+        return "select";
     }
 
     //登录
     @RequestMapping(value = "/loginn",method = RequestMethod.GET)
-    public ModelAndView login(){
+    public ModelAndView login1(){
         return new ModelAndView("/login.html");
     }
     @PostMapping(value = "/login")
     @ResponseBody
     public String login( String username,String password, String email) {
+        System.out.println(username+"==================================");
         RegisterUser user = userService.select(username, DigestUtils.md5DigestAsHex(password.getBytes()),email);
         if (user == null || user.getName() == null) {
             return "error";
@@ -36,8 +37,11 @@ public class UserController {
     }
 
 //注册
-
-    @RequestMapping(value = "/registry", method = RequestMethod.GET)
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public ModelAndView register() {
+        return new ModelAndView("/register.html");
+    }
+    @PostMapping(value = "/registry")
     @ResponseBody
     public String registry(@RequestBody RegisterUser user) {
         user.setName(user.getName());
