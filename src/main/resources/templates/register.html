@@ -12,11 +12,7 @@
             position: relative;
             width: 1550px;
             height: 800px;
-<<<<<<< HEAD:src/main/resources/templates/register.html
-            background: url("../statics/images/beijing.png") no-repeat;
-=======
-            background: url("static/images/beijing.png") no-repeat;
->>>>>>> b63ec687f91c8addc3617f8aeb34f03cd8971bae:src/main/resources/statics/register.html
+            background: url("images/beijing.png") no-repeat;
             background-size: 100% 100%;
             margin: 0 auto;
         }
@@ -97,22 +93,22 @@
 <body>
 <!--注册-->
 <div class="boxx">
-    <form class="box"onsubmit="return true;" action="loginn" method="GET">
+    <form class="box"onsubmit="return false;" method="GET">
         <h1>register</h1>
         <input type="text"name="username"placeholder="UserName"/>
         <input type="password"name="password"placeholder="UserPassword" />
         <input type="email" name="email" placeholder="email"/>
-        <input type="text" id="input1" placeholder="checkcode"/>
+        <input type="text" id="code" placeholder="checkcode"/>
         <input type="text" onclick="createCode()" readonly="readonly" id="checkCode" class="unchanged" style="width: 80px" placeholder="click here"/><br />
-<!--        <input id="Button1" onclick="validate();" type="button" value="确定" />-->
-        <input id="Button1" onclick="validate();" type="submit"  value="Register" />
+        <!--        <input id="Button1" onclick="validate();" type="button" value="确定" />-->
+        <input id="Button1" type="submit"  value="Register" />
 
     </form>
-<!--    <div class="right">-->
-<!--        <h1>Welcome to Didi job platform</h1>-->
-<!--        <p>Didi Job platform is a trading platform dedicated to serving the vast number of job seekers and companies. You will have a perfect experience here</p>-->
-<!--&lt;!&ndash;        <p>Not registered yet? Click here to <a href="#">register</a> </p>&ndash;&gt;-->
-<!--    </div>-->
+    <!--    <div class="right">-->
+    <!--        <h1>Welcome to Didi job platform</h1>-->
+    <!--        <p>Didi Job platform is a trading platform dedicated to serving the vast number of job seekers and companies. You will have a perfect experience here</p>-->
+    <!--&lt;!&ndash;        <p>Not registered yet? Click here to <a href="#">register</a> </p>&ndash;&gt;-->
+    <!--    </div>-->
 </div>
 <script language="javascript" type="text/javascript">
     var code; //在全局 定义验证码
@@ -133,14 +129,14 @@
         }
     }
 
-    function validate() {
+    $('Button1').click(function () {
         $.ajax({
             url: "registry",
             type: 'GET',
-            data: {'username': $("#username").val(), 'password': $("#password").val(),'email': $("#email").val(),'code': $("#input1").val()},
+            data: {'username': $("#username").val(), 'password': $("#password").val(),'email': $("#email").val(),'code': $("#code").val()},
             success: function (res) {
                 if(res=="success"){
-                    wsSend()
+                    alert("ok")
                     function login(){
                         window.location.href='login.html'
                     }
@@ -153,15 +149,16 @@
                 alert("error!!!!!")
             }
         });
-        var inputCode = document.getElementById("input1").value;
-        if (inputCode.length <= 0) {
-            alert("请输入验证码！");
-        } else if (inputCode != code) {
-            alert("验证码输入错误！");
-            createCode();//刷新验证码
-        } else {
-            alert("^-^ OK");
-        }
+
+        /*        var inputCode = document.getElementById("input1").value;
+                if (inputCode.length <= 0) {
+                    alert("请输入验证码！");
+                } else if (inputCode != code) {
+                    alert("验证码输入错误！");
+                    createCode();//刷新验证码
+                } else {
+                    alert("^-^ OK");
+                }*/
     }
 </script>
 </body>

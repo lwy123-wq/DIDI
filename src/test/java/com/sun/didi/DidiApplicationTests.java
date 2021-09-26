@@ -25,8 +25,8 @@ class DidiApplicationTests {
         System.out.println("=============================");
         String password="46623";
 
-        RegisterUser ll = userService.select("吴小姐", DigestUtils.md5DigestAsHex(password.getBytes()), "00000@qq.com");
-        System.out.println(ll.getEmail()+"\n"+ll.getName()+"\n"+ll.getPasswd());
+//        RegisterUser ll = userService.select("吴小姐", DigestUtils.md5DigestAsHex(password.getBytes()), "00000@qq.com");
+//        System.out.println(ll.getEmail()+"\n"+ll.getName()+"\n"+ll.getPasswd());
 
 
 //        RegisterUser re=new RegisterUser();

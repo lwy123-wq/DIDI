@@ -26,9 +26,11 @@ public class TestMyCache {
 
     @Test
     public void testCache() {
-        RegisterUser user = userMapper.findByNameAndPassword("ll","1111");
+        RegisterUser user=userMapper.findByUserId(3);
+        System.out.println(user);
+        //RegisterUser user = userMapper.findByNameAndPassword("ll","1111");
        // RegisterUser user=new RegisterUser();
-        System.out.println(user.getEmail());
+       // System.out.println(user.getEmail());
 //        Assert.assertEquals("ll", user.getName());
 
     }

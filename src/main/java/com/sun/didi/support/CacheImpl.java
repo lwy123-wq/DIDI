@@ -1,3 +1,4 @@
+/*
 package com.sun.didi.support;
 
 <<<<<<< HEAD
@@ -40,11 +41,17 @@ public class CacheImpl {
         }
         //执行当前被aop代理的方法
         Object proceed = joinPoint.proceed();
-        /*从切面值入点获取植入点方法*/
+        */
+/*从切面值入点获取植入点方法*//*
+
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-        /*获取切入点方法*/
+        */
+/*获取切入点方法*//*
+
         Method method = signature.getMethod();
-        /*获取方法上的值*/
+        */
+/*获取方法上的值*//*
+
         Cache cache = method.getAnnotation(Cache.class);
         if (proceed == null) {
             proceed = new RegisterUser();
@@ -59,11 +66,17 @@ public class CacheImpl {
             return null;
         }
         Object proceed = joinPoint.proceed();
-        /*从切面值入点获取植入点方法*/
+        */
+/*从切面值入点获取植入点方法*//*
+
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-        /*获取切入点方法*/
+        */
+/*获取切入点方法*//*
+
         Method method = signature.getMethod();
-        /*获取方法上的值*/
+        */
+/*获取方法上的值*//*
+
         CachePut cachePut = method.getAnnotation(CachePut.class);
         if (cachePut != null) {
             cacheClient.putValue(getKey(joinPoint), proceed, cachePut.expire());
@@ -72,12 +85,14 @@ public class CacheImpl {
     }
 
 
-    /**
+    */
+/**
      * 根据参数生成cachekey
      *
      * @param joinPoint
      * @return
-     */
+     *//*
+
     private String getKey(ProceedingJoinPoint joinPoint) {//首先通过传递参数拿到方法
         String clazzName = joinPoint.getTarget().getClass().getName(); //获取类名
         String method = joinPoint.getSignature().getName();//获取方法名
@@ -101,6 +116,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class CacheImpl {
     @Autowired
     private RedisCache redisCache;
+*/
 /*    @Pointcut("@annotation(com.sun.didi.annotation.Cache)")
     public void cacheMethod(){
 
@@ -110,6 +126,8 @@ public class CacheImpl {
             return null;
         }
         return null;
-    }*/
+    }*//*
+
 >>>>>>> b63ec687f91c8addc3617f8aeb34f03cd8971bae
 }
+*/

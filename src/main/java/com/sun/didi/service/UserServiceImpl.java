@@ -35,19 +35,19 @@ CacheManager :管理缓存
 *CacheNames/value:指定缓存的名字
 key:缓存数据使用的key ，可以用来指定，默认是使用方法参数逇值
 * */
-/*@Cacheable(cacheNames = {"emp"})//,condition = "#id>0" id>0的数据才存到这个缓存的key中
+    @Cacheable(cacheNames = {"emp"})//,condition = "#id>0" id>0的数据才存到这个缓存的key中
     public RegisterUser findById1(int id) {
         System.out.println(id+"员工");
         RegisterUser byUserId = userMapper.findByUserId(id);
         return byUserId;
-    }*/
+    }
     public RegisterUser findUserByName(String username) {
         return userDao.findByName(username);
     }
 
     //@Cacheable(cacheNames = "loginn",key = "#id")
-    public RegisterUser select(String username, String password,String email) {
-        return userDao.select(username, password,email);
+    public RegisterUser select(String username, String password,String email,String code) {
+        return userDao.select(username, password,email,code);
     }
 
     @Cacheable(cacheNames = {"registern"},key = "#id")

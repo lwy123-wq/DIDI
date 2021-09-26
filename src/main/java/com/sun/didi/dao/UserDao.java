@@ -49,17 +49,17 @@ public class UserDao {
         return user;
     }
 
-    public RegisterUser select(String name, String password,String email) {
+    public RegisterUser select(String name, String password,String email,String code) {
 
         final RegisterUser user = new RegisterUser();
-        String sql = "SELECT name,password,Email FROM Register WHERE name=? AND password=? AND Email=?";
-        jdbcTemplate.query(sql, new Object[]{name, password,email}, new RowCallbackHandler() {
+        String sql = "SELECT name,password,Email ,code FROM Register WHERE name=? AND password=? AND Email=? AND code=?";
+        jdbcTemplate.query(sql, new Object[]{name, password,email,code}, new RowCallbackHandler() {
             @Override
             public void processRow(ResultSet resultSet) throws SQLException {
                 user.setName(resultSet.getString(1));
                 user.setPasswd(resultSet.getString(2));
                 user.setEmail(resultSet.getString(3));
-
+                user.setCode(resultSet.getString(4));
             }
         });
         return user;

@@ -15,10 +15,11 @@ public class UserController {
     @Autowired
     private UserServiceImpl userService;
 
-    @RequestMapping(value = "/emp/{a}/{b}/{c}",method = RequestMethod.GET)
+    @RequestMapping(value = "/emp/{a}",method = RequestMethod.GET)
     @ResponseBody
-    public RegisterUser emp(@PathVariable(name = "a") String name,@PathVariable(name = "b") String passwd,@PathVariable(name = "c") String email){
-        RegisterUser byId = userService.select(name,passwd,email);
+    public RegisterUser emp(@PathVariable(name = "a") int id){
+//        RegisterUser byId = userService.select(name,passwd,email,code);
+        RegisterUser byId = userService.findById1(id);
         return byId;
     }
     //登录
@@ -28,8 +29,8 @@ public class UserController {
     }
     @PostMapping(value = "/login")
     @ResponseBody
-    public String login( String username,String password, String email) {
-        RegisterUser user = userService.select(username, DigestUtils.md5DigestAsHex(password.getBytes()),email);
+    public String login( String username,String password, String email,String code) {
+        RegisterUser user = userService.select(username, DigestUtils.md5DigestAsHex(password.getBytes()),email,code);
         if (user == null || user.getName() == null) {
             return "error";
         }
@@ -41,19 +42,20 @@ public class UserController {
     public ModelAndView register(){
         return new ModelAndView("/register.html");//跳转页面
     }
-    @PostMapping(value = "/registry")
+    @GetMapping(value = "/registry")
     @ResponseBody
-    public String registry(@RequestBody RegisterUser user) {
-        user.setName(user.getName());
-        user.setPasswd(user.getPasswd());
-        user.setEmail(user.getEmail());
-        user.setCode(user.getCode());
-        System.out.println(user);
+    public String registry(String username,String password, String email,String code) {
+        System.out.println("==============================="+username);
+        RegisterUser user=new RegisterUser();
+        user.setName(username);
+        user.setPasswd(password);
+        user.setEmail(email);
+        user.setCode(code);
         boolean register = userService.register(user);
         if (register) {
             return "success";
         }
-        return "注册失败";
+        return "error";
     }
 
 

@@ -3,30 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>登录页面</title>
-    <script type="text/javascript" src="../static/js/jquery.js"></script>
-    <script>
-        function login(){
-            $.ajax({
-                url: "/login",
-                type: 'POST',
-                data: {'username': $("#username").val(), 'password': $("#password").val(),'email': $("#email").val()},
-                success: function (res) {
-                    if(res=="success"){
-                        function login1(){
-                            window.location.href='select.html'
-                        }
-                        login1()
-                    }else{
-                        alert("error");
-                    }
-                },
-                error: function (res) {
-                    alert("error!!!!!")
-                }
-            });
-         }
-
-    </script>
     <style>
         body {
             margin: 0;
@@ -36,11 +12,7 @@
             position: relative;
             width: 1550px;
             height: 800px;
-<<<<<<< HEAD:src/main/resources/templates/login.html
             background: url("../statics/images/gongsi.png") no-repeat;
-=======
-            background: url("../static/images/beijing.png") no-repeat;
->>>>>>> b63ec687f91c8addc3617f8aeb34f03cd8971bae:src/main/resources/login.html
             background-size: 100% 100%;
             margin: 0 auto;
         }
@@ -115,7 +87,6 @@
             color: #3592c4;
         }
     </style>
-<<<<<<< HEAD:src/main/resources/templates/login.html
     <script type="text/javascript" src="../statics/js/jquery.js"></script>
     <script>
         function login(){
@@ -125,9 +96,9 @@
                 data: {'username': $("#username").val(), 'password': $("#password").val(),'email': $("#email").val(),'code': $("#code").val()},
                 success: function (res) {
                     if(res=="success"){
-                       // wsSend()
+                        // wsSend()
                         function login(){
-                            window.location.href='register.html'
+                            window.location.href='select.html'
                         }
                         login()
                     }else{
@@ -138,19 +109,14 @@
                     alert("error!!!!!")
                 }
             });
-         }
-=======
->>>>>>> b63ec687f91c8addc3617f8aeb34f03cd8971bae:src/main/resources/login.html
+        }
 
+    </script>
 </head>
 <body>
 <!--登录-->
 <div class="boxx">
-<<<<<<< HEAD:src/main/resources/templates/login.html
-    <form class="box"  action="registern" method="GET" >
-=======
-    <form class="box" onSubmit="return false;" method="GET">
->>>>>>> b63ec687f91c8addc3617f8aeb34f03cd8971bae:src/main/resources/login.html
+    <form class="box"  method="GET" >
         <h1>Login</h1>
         <input type="text"name="username"placeholder="UserName" />
         <input type="password"name="password"placeholder="UserPassword" />
@@ -160,7 +126,7 @@
 
     </form>
     <div class="right">
-      <h1>Welcome to Didi job platform</h1>
+        <h1>Welcome to Didi job platform</h1>
         <p>Didi Job platform is a trading platform dedicated to serving the vast number of job seekers and companies. You will have a perfect experience here</p>
         <p>Not registered yet? Click here to <a href="#">register</a> </p>
         <p><a href="#">Forget your password? Click here to retrieve the password</a> </p>
