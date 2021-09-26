@@ -96,9 +96,13 @@
                 data: {'username': $("#username").val(), 'password': $("#password").val(),'email': $("#email").val(),'code': $("#code").val()},
                 success: function (res) {
                     if(res=="success"){
+<<<<<<< HEAD:src/main/resources/templates/login.html
                        // wsSend()
+=======
+                        // wsSend()
+>>>>>>> b6de6e71046c0ae6ead8aaf7f97b04975838e7b3:src/main/resources/login.html
                         function login(){
-                            window.location.href='register.html'
+                            window.location.href='select.html'
                         }
                         login()
                     }else{
@@ -109,14 +113,18 @@
                     alert("error!!!!!")
                 }
             });
-         }
+        }
 
     </script>
 </head>
 <body>
 <!--登录-->
 <div class="boxx">
+<<<<<<< HEAD:src/main/resources/templates/login.html
     <form class="box"  action="registern" method="GET" >
+=======
+    <form class="box"  method="GET" >
+>>>>>>> b6de6e71046c0ae6ead8aaf7f97b04975838e7b3:src/main/resources/login.html
         <h1>Login</h1>
         <input type="text"name="username"placeholder="UserName" />
         <input type="password"name="password"placeholder="UserPassword" />
@@ -126,7 +134,7 @@
 
     </form>
     <div class="right">
-      <h1>Welcome to Didi job platform</h1>
+        <h1>Welcome to Didi job platform</h1>
         <p>Didi Job platform is a trading platform dedicated to serving the vast number of job seekers and companies. You will have a perfect experience here</p>
         <p>Not registered yet? Click here to <a href="#">register</a> </p>
         <p><a href="#">Forget your password? Click here to retrieve the password</a> </p>
