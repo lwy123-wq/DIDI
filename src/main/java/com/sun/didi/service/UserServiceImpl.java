@@ -63,7 +63,6 @@ key:缓存数据使用的key ，可以用来指定，默认是使用方法参数
         return userDao.insertUser(user) != 0;
     }
 
-<<<<<<< HEAD
     @Cacheable(cacheNames = "user", key = "#id")
     public RegisterUser findById(int id) {
         return userDao.findByUserId(id);
@@ -77,6 +76,4 @@ key:缓存数据使用的key ，可以用来指定，默认是使用方法参数
         return userDao.updateUser(user);
     }
 
-=======
->>>>>>> b63ec687f91c8addc3617f8aeb34f03cd8971bae
 }
