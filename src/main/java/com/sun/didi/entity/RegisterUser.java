@@ -1,11 +1,16 @@
 package com.sun.didi.entity;
 
-public class RegisterUser {
+import java.io.Serializable;
 
+public class RegisterUser implements Serializable {
+
+    //要缓存的 Java 对象必须实现 Serializable 接口，因为 Spring 会将对象先序列化再存入 Redis
+    private static final long serialVersionUID = 2021745504395240314L;
     private String name;
     private String passwd;
     private String email;
-    private int code;
+    private String code;
+
 
     public String getName() {
         return name;
@@ -31,11 +36,11 @@ public class RegisterUser {
         this.email = email;
     }
 
-    public int getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 }

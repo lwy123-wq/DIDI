@@ -12,7 +12,7 @@
             position: relative;
             width: 1550px;
             height: 800px;
-            background: url("images/beijing.png") no-repeat;
+            background: url("../statics/images/beijing.png") no-repeat;
             background-size: 100% 100%;
             margin: 0 auto;
         }
@@ -91,13 +91,14 @@
     </style>
 </head>
 <body>
+<!--注册-->
 <div class="boxx">
-    <form class="box" action="login.action"method="post">
+    <form class="box"onsubmit="return true;" method="GET">
         <h1>register</h1>
-        <input type="text"name="username"placeholder="UserName" value="username"/>
+        <input type="text"name="username"placeholder="UserName"/>
         <input type="password"name="password"placeholder="UserPassword" />
         <input type="email" name="email" placeholder="email"/>
-        <input type="text" id="input1" placeholder="checkcode"/>
+        <input type="text" id="code" placeholder="checkcode"/>
         <input type="text" onclick="createCode()" readonly="readonly" id="checkCode" class="unchanged" style="width: 80px" placeholder="click here"/><br />
 <!--        <input id="Button1" onclick="validate();" type="button" value="确定" />-->
         <input id="Button1" onclick="validate();" type="submit"  value="Register" />
@@ -129,7 +130,26 @@
     }
 
     function validate() {
-        var inputCode = document.getElementById("input1").value;
+        $.ajax({
+            url: "registry",
+            type: 'GET',
+            data: {'username': $("#username").val(), 'password': $("#password").val(),'email': $("#email").val(),'code': $("#code").val()},
+            success: function (res) {
+                if(res=="success"){
+                    wsSend()
+                    function login(){
+                        window.location.href='login.html'
+                    }
+                    login()
+                }else{
+                    alert("error");
+                }
+            },
+            error: function (res) {
+                alert("error!!!!!")
+            }
+        });
+/*        var inputCode = document.getElementById("input1").value;
         if (inputCode.length <= 0) {
             alert("请输入验证码！");
         } else if (inputCode != code) {
@@ -137,7 +157,7 @@
             createCode();//刷新验证码
         } else {
             alert("^-^ OK");
-        }
+        }*/
     }
 </script>
 </body>

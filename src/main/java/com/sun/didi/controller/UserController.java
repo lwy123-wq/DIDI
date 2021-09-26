@@ -7,43 +7,51 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class UserController {
 
-    @Controller
-    public class HelloController {
-        @RequestMapping("hello")
-        public String hello(){
-            return "forward:login.html";
-        }
-    }
     @Autowired
     private UserServiceImpl userService;
 
-    //登录
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/emp/{a}/{b}/{c}/{d}",method = RequestMethod.GET)
     @ResponseBody
-    public String login( String username,String password, String email) {
-        RegisterUser user = userService.select(username, DigestUtils.md5DigestAsHex(password.getBytes()),email);
+    public RegisterUser emp(@PathVariable(name = "a") String name,@PathVariable(name = "b") String passwd,@PathVariable(name = "c") String email,@PathVariable(name = "d") String code){
+        RegisterUser byId = userService.select(name,passwd,email,code);
+        return byId;
+    }
+    //登录
+    @RequestMapping(value = "/loginn",method = RequestMethod.GET)
+    public ModelAndView login(){
+        return new ModelAndView("/login.html");//跳转页面
+    }
+    @PostMapping(value = "/login")
+    @ResponseBody
+    public String login( String username,String password, String email,String code) {
+        RegisterUser user = userService.select(username, DigestUtils.md5DigestAsHex(password.getBytes()),email,code);
         if (user == null || user.getName() == null) {
-            return "用户不存在或用户名、密码错误";
+            return "error";
         }
-      //  String sign = JWTUtil.sign(user, 60L * 1000L * 30L);
-        return "hello" + user.getName();
+        return "success";
     }
 
-//注册
-
-    @RequestMapping(value = "registry", method = RequestMethod.GET)
+    //注册
+     @RequestMapping(value = "/registern",method = RequestMethod.GET)
+     public ModelAndView register(){
+     return new ModelAndView("/register.html");//跳转页面
+}
+    @PostMapping(value = "/registry")
     @ResponseBody
     public String registry(@RequestBody RegisterUser user) {
         user.setName(user.getName());
         user.setPasswd(user.getPasswd());
         user.setEmail(user.getEmail());
+        user.setCode(user.getCode());
+        System.out.println(user);
         boolean register = userService.register(user);
         if (register) {
-            return "hello" + user.getName();
+            return "success";
         }
         return "注册失败";
     }
