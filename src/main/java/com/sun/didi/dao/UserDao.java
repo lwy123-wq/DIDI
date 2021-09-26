@@ -19,6 +19,7 @@ public class UserDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+<<<<<<< HEAD
 
     public RegisterUser findByUserId(int id) {
         final RegisterUser user = new RegisterUser();
@@ -34,6 +35,9 @@ public class UserDao {
 //        List list = jdbcTemplate.queryForObject(sql, new Object[]{id}, List.class);
         return user;
     }
+=======
+    @Cache
+>>>>>>> b63ec687f91c8addc3617f8aeb34f03cd8971bae
     public RegisterUser findByName(String name) {
 
         final RegisterUser user = new RegisterUser();

@@ -1,5 +1,6 @@
 package com.sun.didi.support;
 
+<<<<<<< HEAD
 import com.sun.didi.annotation.Cache;
 import com.sun.didi.annotation.CachePut;
 import com.sun.didi.entity.RegisterUser;
@@ -92,4 +93,23 @@ public class CacheImpl {
         return result;
     }
 
+=======
+
+import org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint;
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class CacheImpl {
+    @Autowired
+    private RedisCache redisCache;
+/*    @Pointcut("@annotation(com.sun.didi.annotation.Cache)")
+    public void cacheMethod(){
+
+    }
+    public Object aroundCache(ProceedingJoinPoint joinPoint){
+        if(joinPoint==null){
+            return null;
+        }
+        return null;
+    }*/
+>>>>>>> b63ec687f91c8addc3617f8aeb34f03cd8971bae
 }
